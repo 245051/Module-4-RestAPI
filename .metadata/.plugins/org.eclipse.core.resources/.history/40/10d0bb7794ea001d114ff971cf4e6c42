@@ -1,0 +1,20 @@
+package com.example.practice.service;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.practice.dto.Dto;
+import com.example.practice.entity.BlogEntity;
+import com.example.practice.repository.RepositoryIface;
+@Service
+public class BlogService {
+	@Autowired
+	private RepositoryIface repo;
+	public  BlogEntity makeDb(@Valid Dto b) {
+		BlogEntity be=BlogEntity.build(0,b.getB_title(),b.getB_content());
+		return repo.save(be);
+	}
+
+}

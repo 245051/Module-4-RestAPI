@@ -1,0 +1,25 @@
+package com.example.practice.dto;
+
+import java.util.Date;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+
+public class dto {
+	@NotNull(message="Name cannot be null")
+	private String ename;
+	@NotBlank
+	private String eaddress;
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	private Date edate;
+	@Email(message="Enter the valid email")
+	private String email;
+	@Min=18
+	@Max=60
+	private int age;
+	@Pattern(regexp=)
+	private String pattern;
+
+}

@@ -1,0 +1,27 @@
+package com.example.practice.controller;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.practice.dto.dto;
+import com.example.practice.entity.entity;
+import com.example.practice.repository.repository;
+
+@RestController
+@RequestMapping()
+public class contoller {
+	@Autowired
+	private repository repo;
+	@PostMapping("/create")
+	public ResponseEntity<?> create(@RequestBody @Valid dto d){
+		entity e=entity.build(0,d.getEname(),d.getEmail(),d.getAge(),d.getEdate(),d.getEaddress());
+		return ResponseEntity.ok().body(repo.save(e));
+	
+	}
+}
